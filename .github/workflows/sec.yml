@@ -21,6 +21,4 @@ jobs:
 
     - name: stg secrets
       if: ${{ github.events.inputs == "stg" }}
-      run: echo ${{ secrets.stg_sec }}	  
-	  
-	  
+      run: echo ${{ secrets.stg_sec }}
