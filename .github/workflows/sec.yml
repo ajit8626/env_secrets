@@ -17,7 +17,11 @@ jobs:
     runs-on: ubuntu-latest    
     environment: dev
     steps:
+    - name: print
+      run: echo ${{ github.events.inputs.environment }}
+      
     - name: dev secrets
+      if: ${{ github.events.inputs.environment }} == 'dev'
       run: echo ${{ secrets.DEV_SEC }}
 
   stg_env:
