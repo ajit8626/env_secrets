@@ -21,10 +21,9 @@ jobs:
       if: ${{ github.event.inputs.ENV }} == 'dev'
       run: |
         echo ${{ secrets.DEV_SEC }} 
-        echo ${{ github.event.inputs.ENV }}
 
     - name: stg secrets
       if: ${{ github.event.inputs.ENV }} == 'stg'
       run: |
         echo ${{ secrets.STG_SEC }}
-        echo ${{ github.event.inputs.ENV }}
+
