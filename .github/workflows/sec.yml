@@ -18,7 +18,6 @@ jobs:
     environment: dev
     steps:
     - name: dev secrets
-      if: ${{ github.events.inputs.environment == 'dev' }}
       run: echo ${{ secrets.DEV_SEC }}
 
   stg_env:
@@ -26,5 +25,4 @@ jobs:
     environment: stg
     steps:
     - name: stg secrets
-      if: ${{ github.events.inputs.environment == 'stg' }}
       run: echo ${{ secrets.STG_SEC }}
