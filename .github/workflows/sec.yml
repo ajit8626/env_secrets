@@ -9,6 +9,9 @@ on:
         options: 
         - dev
         - stg
+      environment:
+        type: environment
+        required: true
       
 jobs:
   greet:
