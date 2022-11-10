@@ -13,9 +13,11 @@ on:
 
       
 jobs:
-  greet:
-    runs-on: ubuntu-latest
-
+  dev_env:
+    runs-on: ubuntu-latest    
+    environment: 
+      name: ${{ github.events.inputs.environment }}
+      url: https://github.com
     steps:
     - name: dev secrets
       if: ${{ github.events.inputs.environment == 'dev' }}
