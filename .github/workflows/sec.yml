@@ -15,18 +15,12 @@ on:
 jobs:
   dev_env:
     runs-on: ubuntu-latest    
-    environment: dev
-    steps:
-    - name: print
-      run: echo ${{ github.events.inputs.environment }}
-      
+    environment: ${{ github.events.inputs.environment }}
+    steps:      
     - name: dev secrets
       if: ${{ github.events.inputs.environment }} == 'dev'
       run: echo ${{ secrets.DEV_SEC }}
 
-  stg_env:
-    runs-on: ubuntu-latest
-    environment: stg
-    steps:
     - name: stg secrets
+      if: ${{ github.events.inputs.environment }} == 'stg'
       run: echo ${{ secrets.STG_SEC }}
