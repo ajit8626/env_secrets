@@ -3,15 +3,14 @@ name: env secrets
 on:
   workflow_dispatch:
     inputs:
-      name:
-        type: choice
+      environment:
+        type: environment
+        required: true
         description: Environment wise secrets. Select the Environment
         options: 
         - dev
         - stg
-      environment:
-        type: environment
-        required: true
+
       
 jobs:
   greet:
