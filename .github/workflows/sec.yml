@@ -21,8 +21,8 @@ jobs:
     steps:
     - name: dev secrets
       if: ${{ github.events.inputs.environment == 'dev' }}
-      run: echo ${{ secrets.dev_sec }}
+      run: echo ${{ secrets.DEV_SEC }}
 
     - name: stg secrets
       if: ${{ github.events.inputs.environment == 'stg' }}
-      run: echo ${{ secrets.stg_sec }}
+      run: echo ${{ secrets.STG_SEC }}
