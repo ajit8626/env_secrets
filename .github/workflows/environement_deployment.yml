@@ -24,11 +24,7 @@ jobs:
   stg_env:
     needs: [dev_env]
     if: >- 
-      github.event.inputs.releaseType == 'stg' &&
-      needs.dev_env.result == 'skipped' ||
-      needs.dev_env.result == 'failure' ||
-      needs.dev_env.result == 'error'   ||
-      needs.dev_env.result == 'cancelled' 
+      github.event.inputs.releaseType == 'stg'
     runs-on: ubuntu-latest
     environment: stg
     steps:
