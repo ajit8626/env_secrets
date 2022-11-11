@@ -13,20 +13,20 @@ on:
         
 jobs:
   dev_env:
+    if: ${{ github.event.inputs.releaseType }} == 'dev'
     runs-on: ubuntu-latest    
     environment: dev
     steps:      
     - name: dev secrets
-      if: ${{ github.event.inputs.releaseType }} == 'dev'
       run: |
         echo ${{ secrets.DEV_SEC }} 
 
   stg_env:
-    needs: dev_env
+    if: ${{ github.event.inputs.releaseType }} == 'stg'
+    needs: [dev_env]
     runs-on: ubuntu-latest
     environment: stg
     steps:
     - name: stg secrets
-      if: ${{ github.event.inputs.releaseType }} == 'stg'
       run: |
         echo ${{ secrets.STG_SEC }}
