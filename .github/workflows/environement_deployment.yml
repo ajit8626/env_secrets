@@ -22,8 +22,8 @@ jobs:
         echo ${{ secrets.DEV_SEC }} 
 
   stg_env:
-    if: github.event.inputs.releaseType == 'stg'
     needs: [dev_env]
+    if: github.event.inputs.releaseType == 'stg' && needs.test-api.result == 'success' 
     runs-on: ubuntu-latest
     environment: stg
     steps:
