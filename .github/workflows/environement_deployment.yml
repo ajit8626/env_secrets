@@ -22,7 +22,6 @@ jobs:
         echo ${{ secrets.DEV_SEC }} 
 
   stg_env:
-    needs: [dev_env]
     if: github.event.inputs.releaseType == 'stg'
     runs-on: ubuntu-latest
     environment: stg
