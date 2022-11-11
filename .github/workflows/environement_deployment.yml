@@ -25,9 +25,10 @@ jobs:
     needs: [dev_env]
     if: >- 
       github.event.inputs.releaseType == 'stg' &&
-      needs.test-api.result == 'success' ||
-      needs.test-api.result == 'failure' ||
-      needs.test-api.result == 'error'
+      needs.dev_env.result == 'success' ||
+      needs.dev_env.result == 'failure' ||
+      needs.dev_env.result == 'error'   ||
+      needs.dev_env.result == 'inactive' 
     runs-on: ubuntu-latest
     environment: stg
     steps:
