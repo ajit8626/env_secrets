@@ -5,7 +5,10 @@ on:
     inputs:
       releaseType:
         description: 'Deploy Environment dev or stg?'
-        required: true       
+        required: true 
+        options:
+          - dev
+          - stg
         
 jobs:
   dev_env:
@@ -13,7 +16,7 @@ jobs:
     environment: dev
     steps:      
     - name: dev secrets
-      if: ${{ github.event.inputs.ENV }} == 'dev'
+      if: ${{ github.event.inputs.releaseType }} == 'dev'
       run: |
         echo ${{ secrets.DEV_SEC }} 
 
@@ -23,6 +26,6 @@ jobs:
     environment: stg
     steps:
     - name: stg secrets
-      if: ${{ github.event.inputs.ENV }} == 'stg'
+      if: ${{ github.event.inputs.releaseType }} == 'stg'
       run: |
         echo ${{ secrets.STG_SEC }}
