@@ -22,7 +22,13 @@ jobs:
         echo ${{ secrets.DEV_SEC }} 
 
   stg_env:
-    if: github.event.inputs.releaseType == 'stg'
+    if: >-
+        github.event.inputs.releaseType == 'stg' &&
+        ${{ failure() }} ||
+        ${{ cancelled() }} ||
+        ${{ success() }}
+    
+    needs: [dev_env]
     runs-on: ubuntu-latest
     environment: stg
     steps:
