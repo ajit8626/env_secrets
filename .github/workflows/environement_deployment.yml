@@ -28,7 +28,7 @@ jobs:
       needs.dev_env.result == 'skipped' ||
       needs.dev_env.result == 'failure' ||
       needs.dev_env.result == 'error'   ||
-      needs.dev_env.result == 'inactive' 
+      needs.dev_env.result == 'cancelled' 
     runs-on: ubuntu-latest
     environment: stg
     steps:
