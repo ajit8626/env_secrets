@@ -1,0 +1,28 @@
+name: Environment deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      releaseType:
+        description: 'Deploy Environment dev or stg?'
+        required: true       
+        
+jobs:
+  dev_env:
+    runs-on: ubuntu-latest    
+    environment: dev
+    steps:      
+    - name: dev secrets
+      if: ${{ github.event.inputs.ENV }} == 'dev'
+      run: |
+        echo ${{ secrets.DEV_SEC }} 
+
+  stg_env:
+    needs: dev_env
+    runs-on: ubuntu-latest
+    environment: stg
+    steps:
+    - name: stg secrets
+      if: ${{ github.event.inputs.ENV }} == 'stg'
+      run: |
+        echo ${{ secrets.STG_SEC }}
