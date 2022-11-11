@@ -24,6 +24,9 @@ jobs:
 
   stg_env:
     needs: dev_env
+    reviewers: 1
+    usernames:
+      - ajit8626
     runs-on: ubuntu-latest
     environment: ${{ github.event.inputs.ENV }}
     steps:
