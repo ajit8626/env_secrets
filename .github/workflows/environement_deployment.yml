@@ -6,6 +6,7 @@ on:
       releaseType:
         description: 'Deploy Environment dev or stg?'
         required: true 
+        type: choice
         options:
           - dev
           - stg
